@@ -1,0 +1,15 @@
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Informe de Atestiguamiento</title>
+			<link href="/var/www/html/sigeadcon/public/css/pdf.css" rel="stylesheet">
+			<link href="/var/www/html/sigeadcon/public/css/bootstrap.css" rel="stylesheet">
+	</head>
+	<body class="page">
+		@include('pdf.pdf_atestiguamiento')
+		<div class="salto"></div>
+		@include('pdf.pdf_relacioningresos')
+		<div class="salto"></div>
+	
+	</body>
+</html>

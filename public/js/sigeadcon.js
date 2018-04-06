@@ -1,0 +1,56 @@
+$(document).ready(function() {
+	//Tabs y activación de div
+     $("#tabs-atestiguamiento").click(function(){
+      $("#atestiguamiento").css("display", "inline");
+		$("#relacioningresos").css("display", "none");
+		$("#cartapresentacion").css("display", "none");
+		$("#tabs-relacioningreso").removeClass("active");
+		$("#tabs-cartapresentacion").removeClass("active");
+		$(this).addClass("active"); //Add "active" class to selected tab
+   });
+	$("#tabs-relacioningreso").click(function(){
+      $("#atestiguamiento").css("display", "none");
+		$("#relacioningresos").css("display", "inline");
+		$("#cartapresentacion").css("display", "none");
+		$("#tabs-atestiguamiento").removeClass("active");
+		$("#tabs-cartapresentacion").removeClass("active");
+		$(this).addClass("active"); //Add "active" class to selected tab
+   });
+	$("#tabs-cartapresentacion").click(function(){
+      $("#atestiguamiento").css("display", "none");
+		$("#relacioningresos").css("display", "none");
+		$("#cartapresentacion").css("display", "inline");
+		$("#tabs-atestiguamiento").removeClass("active");
+		$("#tabs-relacioningreso").removeClass("active");
+		$(this).addClass("active"); //Add "active" class to selected tab
+   });
+
+	$("#periodo_1").keyup(function(){
+      var periodo=$("#periodo_1").val();
+		$("#periodo_2").val(periodo);
+		$("#periodo_rel").val(periodo);
+		$("#periodo_cart").val(periodo);
+   });
+
+	$("#fecha_ates").keyup(function(){
+      var fecha=$("#fecha_ates").val();
+		$("#fecha_cart").val(fecha);
+   });
+	$(".montos").keyup(function(){
+      var sueldo=parseFloat($("#sueldo").val());
+		var honorarios=parseFloat($("#honorarios").val());
+		var ventas=parseFloat($("#ventas").val());
+		var alquiler=parseFloat($("#alquiler").val());
+		var intereses=parseFloat($("#intereses").val());
+		var dividendos=parseFloat($("#dividendos").val());
+		var ingresos=sueldo+honorarios+ventas+alquiler+intereses+dividendos;
+		var promedio=(ingresos/3).toFixed(2);
+		$("#total_ingresos").val(ingresos);
+		$("#ingresos_cart").val(ingresos);
+		$(".total_ingresos_text").val(ingresos);
+		$("#promedio").val(promedio);
+		$("#promedio_text").val(promedio);
+		
+		
+   });
+});

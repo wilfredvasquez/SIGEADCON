@@ -1,0 +1,42 @@
+html {
+margin: 0;
+}
+.page {
+font-family: "Times New Roman", serif;
+margin: 15mm 20mm 2mm 20mm;
+}
+.salto {
+page-break-after: always;
+border: 0;
+margin: 0;
+padding: 0;
+}
+.text-center{
+text-align:center;
+}
+.text-justify{
+text-align:justify;
+}
+.text-left{
+text-align:left;
+}
+.text-right{
+text-align:right;
+}
+.negritas{
+font-weight:bold;
+}
+.subir-10{
+margin-top:-10mm;
+}
+.bajar-40{
+margin-top:45mm;
+}
+.no-border{
+border: hidden;
+border-color:white;
+}
+.subrayado{
+text-decoration:underline;
+}
+

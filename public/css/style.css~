@@ -1,0 +1,33 @@
+.verticalCenter{
+padding-top: 5%;
+font-family: stencil;
+}
+.borderRight{
+border-right:2px solid red;
+border-bottom:2px solid red;
+}
+.borderLeft{
+border-left:2px solid red;
+border-bottom:2px solid red;
+}
+.borderTop{
+border-top:2px solid red;
+}
+.primero{
+position:relative;
+padding-top:2%;
+z-index:0;
+}
+.marco-documento{
+height: 600px;
+overflow:auto;
+}
+.documento{
+width:90%;
+}
+
+.campo-rellernar{
+background-color:#F6FD9F;
+border: 0;
+text-align:center;
+}

@@ -1,0 +1,219 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Sistema de Gestión Administrativo Contable</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+	 <link href={{ asset('css/footer.css') }} rel="stylesheet">
+	 <link href={{ asset('css/style.css') }} rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{{ route('home') }}" >
+			<img src="{{ asset('image/sigeadcon.png') }}" alt="" width="200" height="40">
+		  </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+          </ul>
+            <button class="btn btn-danger my-2 my-sm-0" data-toggle="modal" data-target=".bd-example-modal-sm" type="button">Acceder Admin</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">		
+	
+		<!-- Formulario de Accesos -->
+		<div class="row verticalCenter">	
+			<!--Consulta de Cliente -->	
+			<div class="col-3 mx-auto card text-center borderRight">
+				<br>
+				<form method="POST" action="{{ route('cliente.consulta') }}" class="form-signin">
+					{{ csrf_field() }}
+					<img class="mb-4" src="{{ asset('image/cliente.png') }}" alt="" width="72" height="72">
+					<p class="text-muted">Zona Cliente</p>
+					<h1 class="h5 mb-3 font-weight-normal">Consulta de Documentos</h1>
+					<br>					
+					<label for="cedula" class="sr-only">Cédula de Identidad</label>
+					<input type="text" name="cedula" id="cedula" class="form-control" placeholder="Cédula de Identidad" required autofocus>
+					<br>
+					<br>
+					<br>
+					<div class="checkbox mb-3">
+					</div>
+					<button class="btn btn-lg btn-danger btn-block" type="submit">Consultar</button>
+    			</form>
+			</div>
+
+			<!--Acceso de Contador -->
+			<div class="col-3 mx-auto card text-center borderLeft">
+				<br>
+				<form method="POST" action="{{ route('usuario.validar') }}" class="form-signin">
+					{{ csrf_field() }}
+					<img class="mb-4" src="{{ asset('image/contador.png') }}" alt="" width="72" height="72">
+					<p class="text-muted">Zona Contador</p>
+					<h1 class="h5 mb-3 font-weight-normal">Por favor Ingrese</h1>
+					<label for="nro_colegiado" class="sr-only">Nro de Colegiado</label>
+					<input type="text" name="nro_colegiado" id="nro_colegiado" class="form-control" placeholder="Nro. de Colegiado" required autofocus>
+					<br>
+					<label for="password" class="sr-only">Password</label>
+					<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+					<div class="checkbox mb-3">
+					  <label>
+						 <a href="#" data-toggle="modal" data-target="#registroModalCenter"> Registrarse </a>
+					  </label>
+					</div>
+					<button class="btn btn-lg btn-danger btn-block" type="submit">Ingresar</button>
+					<!-- @if ($errors->has('mensajeContador'))							
+						<br>
+						<label class="alert alert-danger primero">
+							{{ $errors->first('mensajeContador') }}
+						</label>
+					  @else
+						
+					  @endif -->
+				<br>
+			 </form>
+			</div>
+		</div>
+		<br>
+		@if ($errors->has('msj_error_home'))	
+		<div class="msj-error col-4 mx-auto text-center">
+			<p class="alert alert-danger primero">
+				{{ $errors->first('msj_error_home') }}
+			</p>
+		</div>	
+		@endif
+    </main>
+
+
+	<!--Modal de Registro de Contador -->
+		<div class="modal fade" id="registroModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			 <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalLongTitle">Registro de Contador</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+					  <form method="POST" action="{{ route('usuario.registrarcontador') }}">
+					{{ csrf_field() }}
+
+					<div class="form-row">
+					 <div class="form-group col-md-6">
+						<label for="nombrecont">Nombre</label>
+						<input type="text" class="form-control" name="nombrecont" id="nombrecont" placeholder="Nombre" required>
+					 </div>
+					 <div class="form-group col-md-6">
+						<label for="apellidocont">Apellido</label>
+						<input type="text" class="form-control" name="apellidocont" id="apellidocont" placeholder="Apellido" required>
+					 </div>
+				  </div>
+
+				  <div class="form-row">
+					  <div class="form-group col-md-6">
+							<label for="emailcont">Email</label>
+							<input type="email" class="form-control" name="emailcont" id="emailcont" placeholder="Email" required>
+						 </div>
+						 <div class="form-group col-md-6">
+							<label for="cedulacont">Cédula de Identidad</label>
+							<input type="text" class="form-control" name="cedulacont" id="cedulacont" placeholder="Cédula de Identidad" required>
+					  </div>
+					</div>
+
+				  <div class="form-row">
+					 <div class="form-group col-md-6">
+							<label for="telfcont">Teléfono de contacto</label>
+							<input type="text" class="form-control" name="telfcont" id="telflcont" placeholder="Teléfono" required >
+					 </div>
+					 <div class="form-group col-md-6">
+							<label for="nro_colegiado">Nro. de Colegiatura</label>
+							<input type="text" class="form-control" name="nro_colegiado" id="nro_colegiado" placeholder="Nro. de Colegiatura" required >
+					 </div>
+				  </div>
+
+					<div class="form-row">
+					 <div class="form-group col-md-12">
+							<label for="inst_cont">Institución Universitaria (Opcional)</label>
+							<input type="text" class="form-control" name="inst_cont" id="inst_cont" placeholder="Institución Universitaria">
+					 </div>
+					</div>
+					<div class="form-row">
+					 <div class="form-group col-md-6">
+							<label for="ano_grad">Año de Graduación (Opcional)</label>
+							<input type="text" class="form-control" name="ano_grad" id="ano_grad" placeholder="Año de Graduación">
+					 </div>
+					 <div class="form-group col-md-6">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="password" id="password" placeholder="Password" required >
+					 </div>
+					</div>
+				  <div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					  <button type="submit" class="btn btn-primary">Registrar</button>
+					</div>
+				</form>
+				</div>
+			 </div>
+		  </div>
+		</div>
+	<!--Fin Modal de Registro de Contador
+
+	<!-- Modal de Login Administrador -->
+	<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+		 <div class="modal-content">
+			<div class="mx-auto text-center">
+				<br>
+		   <form method="POST" action="{{ route('admin.validar') }}" class="form-signin">
+					{{ csrf_field() }}
+					<img class="mb-4" src="{{ asset('image/admin.png') }}" alt="" width="85" height="85">
+					<p class="text-muted">Accesso Administrador</p>
+					<label for="usuario" class="sr-only">Usuario</label>
+					<input type="text" name="usuario" id="usuario" class="form-control" placeholder="Usuario" required autofocus>
+					<br>
+					<label for="password" class="sr-only">Password</label>
+					<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+					<br>
+					<button class="btn btn-lg btn-danger btn-block" type="submit">Ingresar</button>
+					<br>
+			 </form>
+			 </div>
+		 </div>
+	  </div>
+	</div>
+
+    <footer class="footer text-center">
+        	<span class="text-muted col" >FECLAVE RIF J-XXXXXXXX-X © Todos los derechos reservados 2018</span>
+			<span class="text-muted col">Desarrollado por Ing. Wilfred Vásquez (wilfredvas@gmail.com) </span>
+      </div>
+    </footer>			
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
+
